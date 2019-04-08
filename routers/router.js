@@ -8,7 +8,7 @@ var router = express.Router()
 
 router.get('/',function(req,res){
     var nowTime = new Date
-    Topic.find({topic_modified_time:{ '$lt': nowTime }},'nickname avatar title content topic_created_time topic_modified_time',function(err,rets){
+    Topic.find({topic_modified_time:{ '$lt': nowTime }},'nickname avatar title  topic_created_time topic_modified_time',function(err,rets){
         if (err) {
             return res.status(500).json('server find error')
         } else if (!rets){
@@ -17,6 +17,7 @@ router.get('/',function(req,res){
             })
         } else {
             console.log('查询结果如下')
+            // rets.content = rets.content.substring(0,5)
             console.log(rets)
             res.render('index.html',{
                 user: req.session.user,
@@ -137,6 +138,27 @@ router.post('/new',function(req,res){
             })
         }
     })
+    
+})
+router.get('/admin',function(req,res){
+    if (req.session.user) {
+        res.render('settings/admin.html',{
+            user: req.session.user
+        })
+    } else {
+        res.redirect('/login')
+    }
+})
+router.get('/profile',function(req,res){
+    if (req.session.user) {
+        res.render('settings/profile.html',{
+            user: req.session.user
+        })
+    } else {
+        res.redirect('/login')
+    }
+})
+router.post('/changePassword',function(req,res){
     
 })
 module.exports = router
