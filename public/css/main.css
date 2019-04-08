@@ -1,0 +1,10 @@
+body{
+    border: 0px;
+    padding: 0px;
+    background-color: antiquewhite;
+}
+.menu-ul{
+    color: brown;
+    list-style-type: none;
+    display: inline;
+}

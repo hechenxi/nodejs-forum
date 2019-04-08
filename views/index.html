@@ -1,0 +1,87 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'多人博客 - 首页'}}{{/block}}
+
+
+{{block 'body'}}
+<div class="container bg-light">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+ 
+        <!-- 指示符 -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+       
+        <!-- 轮播图片 -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="http://static.runoob.com/images/mix/img_fjords_wide.jpg">
+            <div class="carousel-caption">
+              <h3>第一张图片描述标题</h3>
+              <p>描述文字!</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="http://static.runoob.com/images/mix/img_nature_wide.jpg">
+            <div class="carousel-caption">
+              <h3>第二张图片描述标题</h3>
+              <p>描述文字!</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="http://static.runoob.com/images/mix/img_mountains_wide.jpg">
+            <div class="carousel-caption">
+              <h3>第三张图片描述标题</h3>
+              <p>描述文字!</p>
+            </div>
+          </div>
+        </div>
+       
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+       
+</div>
+  <ul class="media-list">
+    {{each topics}}
+    <li class="media">
+      <div class="media-left">
+        <a href="#">
+            <img width="40" height="40" class="media-object" src={{$value.avatar}} alt="...">
+          </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/topics/123">{{$value.title}}</a></h4>
+        <p>{{$value.content}}</p>
+        <p>发表时间：{{$value.topic_created_time}}，最后修改时间：{{$value.topic_modified_time}}</p>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+  <nav aria-label="Page navigation" class=>
+    <ul class="pagination">
+      <li>
+        <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      </li>
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li>
+        <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+{{/block}}
