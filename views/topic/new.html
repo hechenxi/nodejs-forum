@@ -3,30 +3,28 @@
 {{block 'title'}}{{'多人博客 - 首页'}}{{/block}}
 
 {{block 'body'}}
-<section class="container" style="border:1px solid s;background-color: white">
-  <div class="row">
-    <div class="col-md-5">
-      <form action="/new" id="new_form" method="POST">
-        <div class="form-group">
-          <label for="exampleInputEmail1">选择板块</label>
-          <select class="form-control" name="class">
-            <option>分享</option>
-            <option>问答</option>
-            <option>招聘</option>
-            <option>客户端测试</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">标题</label>
-          <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="标题" required="true">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">内容</label>
-          <textarea class="form-control" rows="3" name="content" required="true"></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
-    </div>
+<section class="container bg-white">
+  <div class="tab-content">
+    <form action="/new" id="new_form" method="POST">
+      <div class="form-group">
+        <label for="exampleInputEmail1">选择板块</label>
+        <select class="form-control" name="class">
+          <option>分享</option>
+          <option>问答</option>
+          <option>招聘</option>
+          <option>客户端测试</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">标题</label>
+        <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="标题" required="true">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">内容</label>
+        <textarea class="form-control" rows="3" name="content" required="true"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
   </div>
 </section>
 <script>
