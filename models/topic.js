@@ -3,6 +3,7 @@ var Schema = mongoose.Schema
 
 mongoose.connect('mongodb://localhost:27017/forum', {useNewUrlParser: true})
 console.log('已连接数据库-topic')
+
 var userSchema = new Schema({
     email:{
         type: String,
@@ -17,11 +18,11 @@ var userSchema = new Schema({
         default: '/public/img/avatar-default.png'
     },
     topic_created_time:{
-        type: Date,
+        type: String,
         default: Date.now
     },
     topic_modified_time:{
-        type: Date,
+        type: String,
         default: Date.now
 	},
 	class:{

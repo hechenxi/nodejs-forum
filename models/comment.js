@@ -17,7 +17,7 @@ var userSchema = new Schema({
         required: true
     },
     comment_created_time:{
-        type: Date,
+        type: String,
         default: Date.now
     },
 	comment_content:{

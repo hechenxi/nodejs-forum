@@ -17,11 +17,11 @@ var userSchema = new Schema({
         required: true
     },
     created_time:{
-        type: Date,
+        type: String,
         default: Date.now
     },
     last_modified_time:{
-        type: Date,
+        type: String,
         default: Date.now
     },
     avatar:{

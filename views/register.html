@@ -7,14 +7,20 @@
   <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="/public/css/login.css">
 </head>
-
+<style>
+.mystyle{
+  float: flex;
+  top: 100px;
+  width: 480px;
+}
+</style>
 <body>
-  <div class="container">
+  <div class="container card mystyle" >
     <div class="header">
       <a href="/">
-        <h1>返回主页</h1>
+        <h3>返回主页</h3>
       </a>
-      <h1>用户注册</h1>
+      <h2 class="text-center">用户注册</h2>
     </div>
     <!-- 
       表单具有默认的提交行为，默认是同步的，同步表单提交，浏览器会锁死（转圈儿）等待服务端的响应结果。

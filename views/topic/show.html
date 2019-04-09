@@ -3,37 +3,45 @@
 {{block 'title'}}{{'多人博客 - 帖子内容' }}{{/block}}
 
 {{block 'head'}}
-<!-- <link rel="stylesheet" href="/public/css/markdown-github.css">
 <style>
-  .panel .panel-heading .action i {
-    margin-right: 10px;
+  pre{
+    font-family: monospace;
+    font-weight: 300;
+    font-size: 16px
   }
-</style> -->
+  .card{
+    box-shadow: 0px 0px 5px grey;
+  }
+</style> 
 {{/block}}
 
 {{block 'body'}}
 <div class="container bg-white">
   <br/>
-  <div class="card">
+  <div class="card bg-light text-dark">
     <div class="card-header">
       <h3 class="card-title">{{topic.title}}</h3>
     </div>
-    <div class="card-body">
-      <a href="#" class="card-link">楼主：{{topic.nickname}}</a>
-      <a href="#" class="card-link">发帖时间：{{topic.topic_modified_time}}</a>
-      <hr>
-      <pre><p class="card-text">{{topic.content}}</p></pre>
+    <div class="card-body ">
+      <div class="row ">
+          <div class="col">楼主：<a class="card-link" href="">{{topic.nickname}}</a></div>
+          <div class="col">发帖时间：{{topic.topic_created_time}}</div>
+      </div>
+      <hr/>    
+      <pre class="">{{topic.content}}</pre>
     </div>
   </div>
   <br/>
 
   {{each comments}}
-  <div class="card">
+  <div class="card bg-light text-dark">
     <div class="card-body">
-        <a href="#" class="card-link">回复人：{{$value.nickname}}</a>
-        <a href="#" class="card-link">回复时间：{{$value.comment_created_time}}</a>
-        <hr>
-        <pre><p class="card-text">{{$value.comment_content}}</p></pre>
+      <div class="row">
+          <div class="col">回复人：<a href="#" class="card-link">{{$value.nickname}}</a></div>
+          <div class="col">回复时间：{{$value.comment_created_time}}</div>
+      </div>
+      <hr>
+      <pre><p class="card-text">{{$value.comment_content}}</p></pre>
     </div>
   </div>
   <br/>
@@ -41,7 +49,6 @@
 
   <div class="card">
     <div class="card-body">
-      <h4</h4>
       <form action="/comment" id="new_form" method="POST">
         <div class="form-group">
           <textarea class="form-control" rows="3" name="comment_content" required="true"></textarea>

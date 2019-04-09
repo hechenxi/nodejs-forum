@@ -1,6 +1,8 @@
 var express = require('express')
 var md5 = require('blueimp-md5')
 var url = require('url')
+var moment = require('moment');
+moment().format('YYYY-MM-DD HH:mm:ss');
 
 var User = require('../models/user.js')
 var Topic = require('../models/topic.js')
@@ -12,8 +14,7 @@ var post_id
 var router = express.Router()
 
 router.get('/',function(req,res){
-    var nowTime = new Date
-    Topic.find({topic_modified_time:{ '$lt': nowTime }},'nickname avatar title  topic_created_time topic_modified_time',{sort: {_id: -1},limit: 10},function(err,rets){
+    Topic.find(null,'nickname avatar title  topic_created_time topic_modified_time',{sort: {_id: -1},limit: 10},function(err,rets){
         if (err) {
             return res.status(500).json('server find error')
         } else if (!rets){
@@ -21,9 +22,10 @@ router.get('/',function(req,res){
                 user: req.session.user
             })
         } else {
-            console.log('查询结果如下')
-            // rets.content = rets.content.substring(0,5)
-            console.log(rets)
+            rets.forEach(function(value){
+                　　value.topic_created_time = moment(value.topic_created_time).format('YYYY-MM-DD HH:mm:ss')
+                　　value.topic_modified_time = moment(value.topic_modified_time).format('YYYY-MM-DD HH:mm:ss')
+            })
             res.render('index.html',{
                 user: req.session.user,
                 topics: rets
@@ -223,7 +225,7 @@ router.get('/topics',function(req,res){
         } else if (!data) {
             return res.send('not fount post')
         } else {
-            
+            data.topic_created_time = moment(data.topic_created_time).format('YYYY-MM-DD HH:mm:ss')
             Comment.find({post_id:post_id},'nickname comment_created_time comment_content',{sort: {_id: 1},limit: 10},function(err,rets){
                 if (err) {
                     return res.status(500).json('server find error')
@@ -233,9 +235,9 @@ router.get('/topics',function(req,res){
                         topic: data
                     })
                 } else {
-                    console.log('查询结果如下')
-                    // rets.content = rets.content.substring(0,5)
-                    console.log(rets)
+                    rets.forEach(function(value){
+                        　　value.comment_created_time = moment(value.comment_created_time).format('YYYY-MM-DD HH:mm:ss')
+                    })
                     res.render('topic/show.html',{
                         user: req.session.user,
                         topic: data,
